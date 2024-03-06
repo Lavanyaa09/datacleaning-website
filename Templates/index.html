@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Data Cleaning</title>
+     <style>
+        body {
+            background-color: #FDF5E6; /* Replace with your desired pastel color code */
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1, h2 {
+            color: #5E5E5E; /* Replace with your desired text color code */
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #5E5E5E;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #A9A9A9;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #B0E57C; /* Pastel Green */
+            color: #264653; /* Dark Blue for button text */
+            border: none;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 20px;
+             color: #5E5E5E;
+        }
+    </style>
+</head>
+<body>
+    <h1>Excel Data Cleaning</h1>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Choose an Excel file:</label>
+        <input type="file" id="file" name="file" accept=".xls, .xlsx" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    {% if cleaned_data %}
+        <h2>Cleaned Data:</h2>
+        {{ cleaned_data | safe }} {# Use the safe filter to render HTML content #}
+    {% endif %}
+</body>
+</html>
